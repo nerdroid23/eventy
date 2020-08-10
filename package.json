@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
+    "@tailwindcss/ui": "^0.5.0",
+    "form-backend-validation": "^2.4.0",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {

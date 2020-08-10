@@ -1,4 +1,8 @@
 {
   "semi": false,
-  "singleQuote": true
+  "singleQuote": true,
+  "tabWidth": 2,
+  "eslintIntegration": true,
+  "endOfLine": "auto",
+  "printWidth": 100
 }
