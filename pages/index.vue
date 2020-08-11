@@ -1,7 +1,8 @@
 <template>
-  <div class="container">
+  <ContentSection title="Dashboard">
     <div>
       <Logo />
+
       <h1 class="title">
         eventy-front
       </h1>
@@ -24,9 +25,14 @@
         </a>
       </div>
     </div>
-  </div>
+  </ContentSection>
 </template>
 
 <script>
-export default {}
+import ContentSection from '@/components/ContentSection'
+
+export default {
+  components: { ContentSection },
+  middleware: 'auth',
+}
 </script>

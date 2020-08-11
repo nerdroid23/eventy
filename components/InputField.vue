@@ -1,6 +1,9 @@
 <template>
   <div>
-    <label for="email" class="block text-sm font-medium leading-5 text-gray-700">
+    <label
+      :for="name"
+      class="block text-sm font-medium leading-5 text-gray-700"
+    >
       {{ label }}
     </label>
 
@@ -31,6 +34,37 @@
 <script>
 export default {
   name: 'InputField',
-  props: ['form', 'label', 'name', 'type', 'value'],
+  props: {
+    form: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+    label: {
+      type: String,
+      default() {
+        return ''
+      },
+    },
+    name: {
+      type: String,
+      default() {
+        return ''
+      },
+    },
+    type: {
+      type: String,
+      default() {
+        return ''
+      },
+    },
+    value: {
+      type: String,
+      default() {
+        return ''
+      },
+    },
+  },
 }
 </script>

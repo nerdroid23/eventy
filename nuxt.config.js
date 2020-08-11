@@ -36,6 +36,10 @@ export default {
       },
     ],
   },
+  loading: {
+    color: '#29d',
+    height: '3px',
+  },
   /*
    ** Global CSS
    */
@@ -44,7 +48,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [{ src: '~/plugins/form.js' }],
+  plugins: [
+    { src: '~/plugins/axios.js' },
+    { src: '~/plugins/form.js', mode: 'client' },
+    { src: '~/plugins/v-click-outside.js', mode: 'client' },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -65,6 +73,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
   /*
    ** Axios module configuration
@@ -84,6 +93,7 @@ export default {
   router: {
     extendRoutes(routes) {
       routes.find((r) => r.path.includes('/auth/register')).path = '/register'
+      routes.find((r) => r.path.includes('/auth/login')).path = '/login'
     },
   },
 }

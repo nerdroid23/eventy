@@ -4,15 +4,15 @@
       <Logo />
 
       <h2 class="mt-6 text-3xl leading-9 font-extrabold text-gray-900">
-        Create your <span class="text-indigo-500">Eventy</span> account
+        Sign in to your account
       </h2>
       <p class="mt-2 text-sm leading-5 text-gray-600 max-w">
-        Already have one?
+        Don't have one?
         <NuxtLink
-          to="/login"
+          to="/register"
           class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
         >
-          Sign In
+          Sign Up
         </NuxtLink>
       </p>
     </div>
@@ -33,14 +33,6 @@
         />
 
         <InputField
-          v-model="form.name"
-          label="Name"
-          name="name"
-          type="text"
-          :form="form"
-        />
-
-        <InputField
           v-model="form.password"
           label="Password"
           name="password"
@@ -48,13 +40,30 @@
           :form="form"
         />
 
-        <InputField
-          v-model="form.password_confirmation"
-          label="Confirm password"
-          name="password_confirmation"
-          type="password"
-          :form="form"
-        />
+        <div class="mt-6 flex items-center justify-between">
+          <div class="flex items-center">
+            <input
+              id="remember_me"
+              type="checkbox"
+              class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+            />
+            <label
+              for="remember_me"
+              class="ml-2 block text-sm leading-5 text-gray-900"
+            >
+              Remember me
+            </label>
+          </div>
+
+          <div class="text-sm leading-5">
+            <a
+              href="#"
+              class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+            >
+              Forgot your password?
+            </a>
+          </div>
+        </div>
 
         <div>
           <span class="block w-full rounded-md shadow-sm">
@@ -63,7 +72,7 @@
               type="submit"
               class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
             >
-              Register
+              Sign In
             </button>
           </span>
         </div>
@@ -76,7 +85,7 @@
 import InputField from '@/components/InputField'
 
 export default {
-  name: 'Register',
+  name: 'Login',
   middleware: 'guest',
   components: { InputField },
   layout: 'auth',
@@ -88,18 +97,17 @@ export default {
   created() {
     this.form = this.$form({
       email: '',
-      name: '',
       password: '',
-      password_confirmation: '',
     })
   },
   methods: {
     submit() {
-      this.form
-        .post('register')
-        .then((response) => this.$router.replace('/login'))
+      this.form.post('login').then((response) => {
+        this.$cookies.set('token', response)
+        this.$router.replace('/')
+      })
     },
   },
-  head: { title: 'Register' },
+  head: { title: 'Sign In' },
 }
 </script>
