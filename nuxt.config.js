@@ -50,7 +50,7 @@ export default {
    */
   plugins: [
     { src: '~/plugins/axios.js' },
-    { src: '~/plugins/form.js', mode: 'client' },
+    { src: '~/plugins/form.js' },
     { src: '~/plugins/v-click-outside.js', mode: 'client' },
   ],
   /*

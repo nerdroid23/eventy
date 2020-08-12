@@ -91,19 +91,18 @@ export default {
   layout: 'auth',
   data() {
     return {
-      form: null,
+      form: this.$form({
+        email: '',
+        password: '',
+      }),
     }
-  },
-  created() {
-    this.form = this.$form({
-      email: '',
-      password: '',
-    })
   },
   methods: {
     submit() {
       this.form.post('login').then((response) => {
         this.$cookies.set('token', response)
+        this.$axios.defaults.headers.authorization = `Bearer ${response}`
+        this.$store.commit('login')
         this.$router.replace('/')
       })
     },

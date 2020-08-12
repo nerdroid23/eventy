@@ -81,6 +81,7 @@ export default {
     logout() {
       this.$axios.$post('logout').then((response) => {
         this.$cookies.remove('token')
+        this.$store.commit('logout')
         this.$router.replace('/login')
       })
     },

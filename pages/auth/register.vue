@@ -82,16 +82,13 @@ export default {
   layout: 'auth',
   data() {
     return {
-      form: null,
+      form: this.$form({
+        email: '',
+        name: '',
+        password: '',
+        password_confirmation: '',
+      }),
     }
-  },
-  created() {
-    this.form = this.$form({
-      email: '',
-      name: '',
-      password: '',
-      password_confirmation: '',
-    })
   },
   methods: {
     submit() {

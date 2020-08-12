@@ -34,5 +34,6 @@ import ContentSection from '@/components/ContentSection'
 export default {
   components: { ContentSection },
   middleware: 'auth',
+  head: { title: 'Dashboard' },
 }
 </script>
